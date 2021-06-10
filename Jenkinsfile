@@ -17,8 +17,4 @@ node('master')
     git 'https://github.com/SIVAPRACTICE1/testing-scripts.git'
     sh 'java -jar /var/lib/jenkins/workspace/development/testing.jar'
     }
-    stage('continousdelivery')
-    {
-    sh 'scp /var/lib/jenkins/workspace/development/webapp/target/webapp.war ubuntu@172.31.29.126:/var/lib/tomcat9/webapps/prodapp.war'
-    }
 }    
