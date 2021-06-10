@@ -10,15 +10,15 @@ node('master')
     }
     stage('continousdeploy') 
     {
-    sh 'scp /var/lib/jenkins/workspace/main/webapp/target/webapp.war ubuntu@172.31.62.88:/var/lib/tomcat9/webapps/qaapp.war'
+    sh 'scp /var/lib/jenkins/workspace/multibranch_main/webapp/target/webapp.war ubuntu@172.31.62.88:/var/lib/tomcat9/webapps/qaapp.war'
     }
     stage('continoustest')
     {
     git 'https://github.com/SIVAPRACTICE1/testing-scripts.git'
-    sh 'java -jar /var/lib/jenkins/workspace/main/testing.jar'
+    sh 'java -jar /var/lib/jenkins/workspace/multibranch_main/testing.jar'
     }
     stage('continousdelivery')
     {
-    sh 'scp /var/lib/jenkins/workspace/main/webapp/target/webapp.war ubuntu@172.31.29.126:/var/lib/tomcat9/webapps/prodapp.war'
+    sh 'scp /var/lib/jenkins/workspace/multibranch_main/webapp/target/webapp.war ubuntu@172.31.29.126:/var/lib/tomcat9/webapps/prodapp.war'
     }
 }    
